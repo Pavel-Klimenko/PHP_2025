@@ -28,19 +28,7 @@ class App
             throw new \RuntimeException('Error: command is not implementing the correct interface'.PHP_EOL);
         }
 
-        $status = (new $command)->execute($this->argv);
-
-        return $status;
-
-//        $jsonInput = file_get_contents('php://input');
-//        $requestData = json_decode($jsonInput, true);
-//        $bookStoreService = new BookStoreService();
-//
-//        if (!empty($requestData)) {
-//            echo $bookStoreService->search($requestData);
-//        } else {
-//            echo 'Request is empty';
-//        }
+        return (new $command)->execute($this->argv);
     }
 
     private function registerCommand():void

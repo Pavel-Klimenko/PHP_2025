@@ -77,7 +77,7 @@ class BookStoreService
 
     }
 
-    public function search(array $searchQuery)
+    public function search(array $searchQuery):array
     {
         $params = [
             'index' => self::BASE_INDEX,
@@ -85,8 +85,7 @@ class BookStoreService
                 'query' => $searchQuery
             ]
         ];
-
-        return $this->client->search($params);
+        return $this->client->search($params)->asArray();
     }
 
 }
