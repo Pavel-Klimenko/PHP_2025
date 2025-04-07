@@ -13,7 +13,7 @@ function findMaxK($nums) {
     $maxK = -1;
     foreach ($nums as $num) {
         if ($num > 0) {
-            //проверка наличия противоположного числа в массиве $nums
+            //check for the presence of the opposite number in the $nums array
             $oppositeNum = -1 * $num;
             if (in_array($oppositeNum, $nums)) {
                 if ($num > $maxK) $maxK = $num;

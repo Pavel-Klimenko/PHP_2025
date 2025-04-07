@@ -8,11 +8,12 @@
 //TODO работает
 
 //
-//$nums1 = [1,2,2,1];
-//$nums2 = [2,2];
+$nums1 = [1,2,2,1];
+$nums2 = [2,2];
+
 //
 //
-//pr_debug(intersection($nums1, $nums2));
+pr_debug(intersection($nums1, $nums2));
 
 
 //pr_debug($nums1);
@@ -29,7 +30,7 @@ function intersection($nums1, $nums2) {
 
     $arOutput = [];
     foreach ($baseArray as $number) {
-        if (in_array($number, $searchArray)) {
+        if (in_array($number, $searchArray) && !in_array($number, $arOutput)) {
             $arOutput[] = $number;
         }
     }

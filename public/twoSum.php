@@ -28,16 +28,11 @@ function twoSum($nums, $target) {
     foreach ($nums as $index => $val) {
         $baseNumber = $nums[$index];
 
-        //pr_debug($baseNumber);
-
         foreach ($nums as $index2 => $val2) {
             if ($index2 !== $index) {
                 $plusNumber = $nums[$index2];
 
                 if (($baseNumber + $plusNumber) == $target) {
-
-                    //pr_debug($index);
-
                     $arOutput[] = $index;
                     $arOutput[] = $index2;
                     return $arOutput;
