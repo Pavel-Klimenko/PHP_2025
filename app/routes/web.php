@@ -19,4 +19,4 @@ $router->get('/', function () use ($router) {
 
 
 $router->post('/add-event', '\App\Http\Controllers\EventController@add');
-$router->get('/get-event', '\App\Http\Controllers\EventController@get');
+$router->get('/get-event/{number}', '\App\Http\Controllers\EventController@get');

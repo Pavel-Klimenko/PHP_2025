@@ -8,8 +8,8 @@ class EventService
 {
     public function addEvent(string $eventNumber):Events
     {
-        if (!$this->getEvent($eventNumber)) {
-            throw new \RuntimeException('Event with such number not found');
+        if ($this->getEvent($eventNumber)) {
+            throw new \RuntimeException('Event with such number has already exists');
         }
         return Events::create(['number' => $eventNumber]);
     }
