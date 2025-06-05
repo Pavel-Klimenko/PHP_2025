@@ -4,8 +4,7 @@ use App\Services\RabbitMQManager;
 
 try {
     $rabbitMQManager = new RabbitMQManager();
-    $rabbitMQManager->consumeMessages();
+    //$rabbitMQManager->consumeMessages();
 } catch (Exception $e) {
     print_r($e->getMessage());
 }
-
