@@ -15,8 +15,10 @@ class RabbitMQManager
 
     private AMQPStreamConnection $connection;
     private AMQPChannel $channel;
+    private EventService $eventService;
 
     public function __construct(){
+        $this->eventService = new EventService();
         $this->connection = new AMQPStreamConnection(
             env('RABBIT_MQ_HOST'),
             env('RABBIT_MQ_PORT'),
@@ -37,24 +39,25 @@ class RabbitMQManager
 
     public function consumeMessages()
     {
-        $this->channel->exchange_declare(self::EXCHANGE_NAME, self::EXCHANGE_TYPE, false, false, false);
-        list($queue_name, ,) = $this->channel->queue_declare(self::QUEUE, false, false, true, false);
-
-        $this->channel->queue_bind($queue_name, self::QUEUE);
-        $callback = function (AMQPMessage $msg) {
-            echo ' [x] ', $msg->getBody(), "\n";
-        };
-
-        $this->channel->basic_consume($queue_name, '', false, true, false, false, $callback);
-
-        try {
-            $this->channel->consume();
-        } catch (\Throwable $exception) {
-            echo $exception->getMessage();
-        }
-
-        $this->channel->close();
-        $this->connection->close();
+//        $this->channel->exchange_declare(self::EXCHANGE_NAME, self::EXCHANGE_TYPE, false, false, false);
+//        list($queue_name, ,) = $this->channel->queue_declare(self::QUEUE, false, false, true, false);
+//
+//        $this->channel->queue_bind($queue_name, self::QUEUE);
+//        $callback = function (AMQPMessage $msg) {
+//            $this->eventService->addEvent($msg->getBody());
+//            echo ' [x] ', $msg->getBody(), "\n";
+//        };
+//
+//        $this->channel->basic_consume($queue_name, '', false, true, false, false, $callback);
+//
+//        try {
+//            $this->channel->consume();
+//        } catch (\Throwable $exception) {
+//            echo $exception->getMessage();
+//        }
+//
+//        $this->channel->close();
+//        $this->connection->close();
     }
 
     private function declareExchange(AMQPChannel $channel, string $name, string $type)

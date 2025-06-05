@@ -18,4 +18,5 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->post('/add-event', '\App\Http\Controllers\EventController@addEvent');
+$router->post('/add-event', '\App\Http\Controllers\EventController@add');
+$router->get('/get-event', '\App\Http\Controllers\EventController@get');

@@ -15,7 +15,7 @@ return new class extends Migration
         if (!Schema::hasTable(Events::TABLE_NAME)) {
             Schema::create(Events::TABLE_NAME, function (Blueprint $table) {
                 $table->id();
-                $table->integer('number');
+                $table->integer('number')->unique();
                 $table->boolean('is_done')->default(false);
                 $table->timestamps();
             });
