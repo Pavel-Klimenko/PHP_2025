@@ -42,6 +42,20 @@ services:
         condition: service_healthy
     networks:
       - internal
-
+  db:
+    image: mysql:5.7
+    container_name: events-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: events
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: rightway
+      MYSQL_USER: pavel
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - internal
 networks:
   internal:
