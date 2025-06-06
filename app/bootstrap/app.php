@@ -29,6 +29,8 @@ $app = new Laravel\Lumen\Application(
 
  $app->configure('swagger-lume');
 
+ $app->configure('queue');
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -63,6 +65,8 @@ $app->singleton(
 
 $app->configure('app');
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -96,7 +100,8 @@ $app->configure('app');
 $app->register(\SwaggerLume\ServiceProvider::class);
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
+$app->register(VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

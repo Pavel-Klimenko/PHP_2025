@@ -11,6 +11,7 @@ class EventService
         if ($this->getEvent($eventNumber)) {
             throw new \RuntimeException('Event with such number has already exists');
         }
+
         return Events::create(['number' => $eventNumber]);
     }
 

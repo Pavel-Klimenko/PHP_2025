@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Helper;
 use App\Models\Events;
 use App\Services\EventService;
-use App\Services\RabbitMQManager;
+//use App\Services\RabbitMQManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class EventController extends Controller
      * @return void
      */
 
-    private RabbitMQManager $rabbitMQManager;
+    //private RabbitMQManager $rabbitMQManager;
     private EventService $eventService;
 
 
@@ -55,10 +55,7 @@ class EventController extends Controller
     public function add(Request $request) {
         try {
             $this->validate($request, ['number' => 'required|integer']);
-
-            $this->eventService->addEvent($request->number);
-
-            //$this->rabbitMQManager->pushMessage($request->number);
+            event(new \App\Events\AddUserRequestEvent($request->number));
             return Helper::successResponse([], 'New event added to queue');
 
         } catch(\Exception $exception) {
