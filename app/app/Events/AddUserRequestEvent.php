@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Events;
 
 class AddUserRequestEvent extends Event
 {

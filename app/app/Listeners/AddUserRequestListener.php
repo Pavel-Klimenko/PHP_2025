@@ -3,9 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\AddUserRequestEvent;
-use App\Events\ExampleEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use App\Services\EventService;
 
 class AddUserRequestListener implements ShouldQueue

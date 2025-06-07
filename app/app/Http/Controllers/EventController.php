@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Helper;
-use App\Models\Events;
 use App\Services\EventService;
-//use App\Services\RabbitMQManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,13 +16,11 @@ class EventController extends Controller
      * @return void
      */
 
-    //private RabbitMQManager $rabbitMQManager;
     private EventService $eventService;
 
 
     public function __construct()
     {
-        //$this->rabbitMQManager = new RabbitMQManager();
         $this->eventService = new EventService();
     }
 
